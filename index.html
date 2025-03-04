@@ -16,13 +16,13 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #fff;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            color: #333;
             padding: 20px;
         }
 
         header {
-            background: linear-gradient(135deg, #ff6f61, #ffcc00);
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
             color: #fff;
             padding: 80px 20px;
             text-align: center;
@@ -69,7 +69,7 @@
         }
 
         section.content-section {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -82,15 +82,16 @@
         section.content-section h2 {
             margin-bottom: 25px;
             font-size: 2.5rem;
-            color: #ffcc00;
+            color: #ff7e5f;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         section.content-section p {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 20px;
+            color: #555;
         }
 
         section.content-section ol, section.content-section ul {
@@ -100,6 +101,37 @@
 
         section.content-section li {
             margin-bottom: 10px;
+        }
+
+        /* Tombol Back to Top */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         /* Animasi */
@@ -182,7 +214,7 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             margin-top: 40px;
             backdrop-filter: blur(10px);
@@ -191,11 +223,11 @@
 
         footer small {
             font-size: 0.9rem;
-            color: #ccc;
+            color: #555;
         }
 
         footer b {
-            color: #ffcc00;
+            color: #ff7e5f;
         }
     </style>
 </head>
@@ -229,6 +261,9 @@
         </ol>
     </section>
 
+    <!-- Tombol Back to Top -->
+    <button id="back-to-top" title="Kembali ke Atas">↑</button>
+
     <footer>
         <small>
             <p>Pembuat Web: <b>Revan Nathaniello Simaela</b></p>
@@ -238,5 +273,25 @@
             <p><i>Tugas Sejarah</i></p>
         </small>
     </footer>
+
+    <script>
+        // Script untuk tombol Back to Top
+        const backToTopButton = document.getElementById("back-to-top");
+
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
 </body>
 </html>
